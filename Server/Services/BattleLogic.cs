@@ -43,7 +43,8 @@ public class BattleLogic : IBattleLogic
                 turnToProcess.ActionCharacter.AttackModifier,
                 turnToProcess.DefendingCharacter.ArmorClass);
         
-        currentTurnLog.AttackDiceRoll = (attackDiceRoll, hitType);
+        currentTurnLog.AttackDiceRoll = attackDiceRoll;
+        currentTurnLog.AttachHitType = hitType;
 
         if (hitType == HitType.CriticalMiss || hitType == HitType.Miss) return currentTurnLog;
 

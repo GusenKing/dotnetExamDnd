@@ -27,8 +27,8 @@
             <h2>@turn.ActionCharacterName</h2>
             @for (int i = 0; i < turn.DamageDiceRolls.Count; i++)
             {
-                <div> d20 + attack modifier: @turn.AttackDiceRoll.Item1 + @turn.ActionCharacterAttackModifier</div> 
-                <div> @turn.AttackDiceRoll.Item2 </div>
+                <div> d20 + attack modifier: @turn.AttackDiceRoll + @turn.ActionCharacterAttackModifier</div> 
+                <div> @turn.AttachHitType </div>
                 <div>Damage: @turn.DamageDiceRolls[i] + @turn.ActionCharacterDamageModifier for @turn.DefendingCharacterName</div>
                 <div>Enemy HP: @turn.DefendingCharacterHp </div>  
             }                                              

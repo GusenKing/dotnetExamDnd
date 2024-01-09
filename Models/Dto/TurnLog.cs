@@ -2,7 +2,8 @@
 
 public class TurnLog
 {
-    public (int, HitType) AttackDiceRoll { get; set; }
+    public int AttackDiceRoll { get; set; }
+    public HitType AttachHitType { get; set; }
     public List<int> DamageDiceRolls { get; set; } = new();
     public int DefendingCharacterHp { get; set; }
     public string ActionCharacterName { get; set; }
