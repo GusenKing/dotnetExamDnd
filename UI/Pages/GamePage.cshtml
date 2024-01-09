@@ -1,0 +1,43 @@
+﻿@page
+@using Models;
+@using System.ComponentModel
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model UI.Pages.GamePage
+
+<div class="card">
+    <div class="card-header">Edit your character</div>
+    <form class="card-body" method="post">
+        @foreach (var property in typeof(Player).GetProperties())
+        {
+            @Html.Label(property.GetCustomAttributes(true)
+                .Select(a => (a as DisplayNameAttribute)?.DisplayName)
+                .FirstOrDefault(name => name is not null) ?? property.Name)
+            @Html.Editor(property.Name, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessage(property.Name, new { @class = "text text-danger" })
+            <br/>
+        }
+        <input type="submit" class="btn btn-primary" value="Начать битву!"/>
+    </form>
+</div>
+
+@if (Model.Result is not null)
+{
+        @foreach (var turn in Model.Result.Logs)
+        {
+            <h2>@turn.ActionCharacterName</h2>
+            @for (int i = 0; i < turn.DamageDiceRolls.Count; i++)
+            {
+                <div> d20 + attack modifier: @turn.AttackDiceRoll + @turn.ActionCharacterAttackModifier</div> 
+                <div> @turn.AttachHitType </div>
+                <div>Damage: @turn.DamageDiceRolls[i] + @turn.ActionCharacterDamageModifier for @turn.DefendingCharacterName</div>
+                <div>Enemy HP: @turn.DefendingCharacterHp </div>  
+            }                                              
+        }
+        
+        <div>
+            Победил:
+            <div>@Model.Result.Winner</div>
+        </div>
+}
+
+
