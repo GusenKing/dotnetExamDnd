@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Models;
 
-public class Player : ICreature
+public class Player : ICharacter
 {
     [Required]
     [MaxLength(30, ErrorMessage = "Name can't be longer than 30")]

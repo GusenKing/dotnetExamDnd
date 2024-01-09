@@ -2,7 +2,7 @@
 
 namespace Models;
 
-public class Monster : ICreature
+public class Monster : ICharacter
 {
     [Key]
     public int MonsterId { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Models;
 
-public interface ICreature
+public interface ICharacter
 {
     public string Name { get; set; }
     
